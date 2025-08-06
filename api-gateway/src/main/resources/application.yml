@@ -1,0 +1,49 @@
+spring:
+  application:
+    name: api-gateway
+
+
+  cloud:
+    gateway:
+      routes:
+        - id: user-service
+          uri: ${USER_SERVICE_URI:lb://USER-SERVICE}
+          predicates:
+            - Path=/api/v1/users/**
+          filters:
+            - StripPrefix=2
+
+        - id: posts-service
+          uri: ${POSTS_SERVICE_URI:lb://POSTS-SERVICE}
+          predicates:
+            - Path=/api/v1/posts/**
+          filters:
+            - StripPrefix=2
+            - name: AuthenticationFilter
+
+        - id: connections-service
+          uri: ${CONNECTIONS_SERVICE_URI:lb://CONNECTIONS-SERVICE}
+          predicates:
+            - Path=/api/v1/connections/**
+          filters:
+            - StripPrefix=2
+            - name: AuthenticationFilter
+
+        - id: notification-service
+          uri: ${NOTIFICATION_SERVICE_URI:lb://NOTIFICATION-SERVICE}
+          predicates:
+            - Path=/api/v1/notification/**
+          filters:
+            - StripPrefix=2
+            - name: AuthenticationFilter
+
+
+jwt:
+  secretKey: kajdhfasdjfasdjfjasdjlfjalsjldfjahadlfadasfdfasgncjes
+
+server:
+  port: 8080
+#eureka:
+#  client:
+#    service-url:
+#      defaultZone: http://discovery-server:8761/eureka
