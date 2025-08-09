@@ -37,7 +37,7 @@ A production-style, microservices-based social network backend inspired by Linke
 
 ---
 
-![High-level Architecture](docs/architecture.png)
+![High-level Architecture](docs/Linkedin_HLD.png)
 
 ---
 
