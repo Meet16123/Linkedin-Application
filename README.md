@@ -235,6 +235,3 @@ kubectl apply -n linkedin -f k8s/deployments/ingress.yaml
 - Neo4j memory: adjust `connections-db.yaml` resource limits if OOM/restarts
 
 ---
-
-## License
-MIT (or add your chosen license)
